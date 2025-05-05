@@ -1,33 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Marate.ai</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marate AI - Future of Medical Software</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0f1a, #101726);
+    }
+  </style>
 </head>
-<body>
-    <nav>
-        <a href="#mission">Mission</a>
-        <a href="#team">Team</a>
-        <a href="#repository">Repository</a> <!-- Updated link -->
+<body class="text-gray-200 font-sans">
+
+  <!-- Logo Intro Section -->
+  <section class="flex items-center justify-center min-h-screen bg-black/90">
+    <img src="https://marate-ai.github.io/Capture.PNG" alt="Marate AI Logo" class="h-64 animate-pulse"> <!-- Increased height from h-48 to h-64 -->
+  </section>
+
+  <!-- Navbar -->
+  <header class="flex justify-between items-center p-6 bg-black bg-opacity-60 shadow-lg backdrop-blur-md sticky top-0 z-50">
+    <div class="flex items-center space-x-4">
+      <img src="https://marate-ai.github.io/Capture.PNG" alt="Marate AI Logo" class="h-20"> <!-- Increased height from h-10 to h-14 -->
+      <span class="text-2xl font-extrabold tracking-wide text-cyan-400">Marate AI</span>
+    </div>
+    <nav class="space-x-8 text-gray-300">
+      <a href="#solutions" class="hover:text-cyan-400 transition">Solutions</a>
+      <a href="#founders" class="hover:text-cyan-400 transition">Founders</a>
+      <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
     </nav>
-    <div id="mission">
-        <img src="Capture.PNG" alt="Mission Image">
-        <p class="goal">Mission</p>
-        <p class="mission-statement">Helping healthcare professionals in West and Center Africa to reach their objectives by providing them with necessary software to optimize their businesses.</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-32 bg-gradient-to-r from-black/80 to-black/50">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">The Future of Medical Intelligence</h1>
+    <p class="text-lg md:text-xl text-gray-400 mb-10">Building AI-powered solutions for tomorrow’s healthcare structures.</p>
+    <a href="#contact" class="px-10 py-4 bg-cyan-500 text-black font-semibold rounded-full text-lg hover:bg-cyan-400 transition">Join the Revolution</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-24 px-6 max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-cyan-400 mb-8">About Marate AI</h2>
+    <p class="text-gray-400 text-lg text-center leading-relaxed">
+      Marate AI is reshaping healthcare software using cutting-edge artificial intelligence, advanced data analytics, and intuitive automation.
+      We empower medical structures to elevate patient care, accelerate operations, and innovate without limits.
+    </p>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solutions" class="py-24 bg-black/40 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-cyan-400 mb-16">Our Solutions</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="bg-white/5 rounded-3xl p-8 shadow-xl hover:scale-105 hover:shadow-cyan-400/40 transition backdrop-blur-md">
+          <h3 class="text-2xl font-semibold text-cyan-300 mb-4">Smart Patient Management</h3>
+          <p class="text-gray-400">Automate and secure records, appointments, and follow-ups with next-gen intelligence.</p>
+        </div>
+        <div class="bg-white/5 rounded-3xl p-8 shadow-xl hover:scale-105 hover:shadow-cyan-400/40 transition backdrop-blur-md">
+          <h3 class="text-2xl font-semibold text-cyan-300 mb-4">Predictive AI Diagnostics</h3>
+          <p class="text-gray-400">Enhance diagnostic precision and patient outcomes with deep AI insights.</p>
+        </div>
+        <div class="bg-white/5 rounded-3xl p-8 shadow-xl hover:scale-105 hover:shadow-cyan-400/40 transition backdrop-blur-md">
+          <h3 class="text-2xl font-semibold text-cyan-300 mb-4">Clinical Data Intelligence</h3>
+          <p class="text-gray-400">Uncover patterns, predict trends, and drive evidence-based decisions effortlessly.</p>
+        </div>
+      </div>
+    </div>  
+  </section>
+
+  <!-- Founders Section -->
+  <section id="founders" class="py-24 bg-gradient-to-r from-black/70 to-black/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-cyan-400 mb-16">Meet Our Visionaries</h2>
+      <div class="grid md:grid-cols-4 gap-12">
+        <div class="text-center">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Founder 1">
+          <h4 class="text-xl font-semibold text-gray-300">Eric Toralta</h4>
+          <p class="text-gray-500">CEO</p>
+        </div>
+        <div class="text-center">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/nice_pic.jpg" alt="Founder 2">
+          <h4 class="text-xl font-semibold text-gray-300">Jonathan Allarassem</h4>
+          <p class="text-gray-500">CTO</p>
+        </div>
+        <div class="text-center">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Founder 3">
+          <h4 class="text-xl font-semibold text-gray-300">Tarso</h4>
+          <p class="text-gray-500">COO & Operations Lead</p>
+        </div>
+        <div class="text-center">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Founder 4">
+          <h4 class="text-xl font-semibold text-gray-300">Sophia Lemoine</h4>
+          <p class="text-gray-500">Chief Research Officer</p>
+        </div>
+      </div>
     </div>
-    <div id="team">
-        <p class="goal">Team</p>
-        <p class="team-expertise">A team of 4 people with expertise in domains of health as well as computer science and AI.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-black/40 backdrop-blur-md">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-cyan-400 mb-12">Connect with Us</h2>
+      <form class="space-y-6">
+        <input type="text" placeholder="Name" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300">
+        <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300">
+        <textarea placeholder="Your message" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300" rows="5"></textarea>
+        <button type="submit" class="w-full bg-cyan-500 text-black py-3 rounded-lg font-semibold hover:bg-cyan-400 transition">Send Message</button>
+      </form>
     </div>
-    <div id="repository">
-        <p class="goal">Github Repository</p>
-        <a href="https://github.com/allarassemjonathan/FADA/blob/main/README.md" target="_blank" class="repository-link">Access Asthma Detection Model Project</a>
-        <br>
-        <a href="https://github.com/allarassemjonathan/AIDS/blob/main/README.md" target="_blank" class="repository-link">Access AIDS Detection Model Project</a>
-        <br>
-        <a href="mailto:toraltaerik@gmail.com" class="repository-link">Contact us</a>
-    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 bg-black/70 text-gray-500 text-sm">
+    © 2025 Marate AI. All rights reserved.
+  </footer>
+
 </body>
 </html>
