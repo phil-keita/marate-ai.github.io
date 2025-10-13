@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marate AI - Future of Medical Software</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
+<style>
   :root {
     --main-color: #06b6d4;
     --bg-light: #f8fafc;
@@ -17,46 +17,47 @@
     scroll-behavior: smooth;
   }
 
-  /* Clearer, more dynamic scroll animation */
+  /* Smoother, lighter scroll animation for mobile */
   .scroll-animate {
     opacity: 0;
-    transform: translateY(100px) scale(0.95);
-    filter: blur(10px);
-    transition: 
-      opacity 0.9s ease-out,
-      transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
-      filter 1.2s ease-out;
+    transform: translateY(50px); /* less movement */
+    filter: blur(6px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out,
+      filter 0.8s ease-out;
+    will-change: opacity, transform; /* helps GPU rendering */
   }
 
   .scroll-animate.visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     filter: blur(0);
   }
 
-  /* Slight delay cascade for child elements (optional aesthetic) */
-  .scroll-animate:nth-of-type(2) { transition-delay: 0.15s; }
-  .scroll-animate:nth-of-type(3) { transition-delay: 0.3s; }
-  .scroll-animate:nth-of-type(4) { transition-delay: 0.45s; }
+  /* Minimal cascading delay */
+  .scroll-animate:nth-of-type(2) { transition-delay: 0.1s; }
+  .scroll-animate:nth-of-type(3) { transition-delay: 0.2s; }
+  .scroll-animate:nth-of-type(4) { transition-delay: 0.3s; }
 
-  /* Add a subtle bounce when fully visible */
+  /* Subtle entry pop, reduced amplitude */
   .scroll-animate.visible {
-    animation: softPop 0.6s ease-out;
+    animation: softPop 0.4s ease-out;
   }
 
   @keyframes softPop {
-    0% { transform: scale(0.95); }
-    60% { transform: scale(1.02); }
+    0% { transform: scale(0.97); }
+    70% { transform: scale(1.01); }
     100% { transform: scale(1); }
   }
 
-  /* Scroll down indicator */
+  /* Smooth scroll indicator */
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
   }
 
   .scroll-indicator {
@@ -65,17 +66,17 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: #06b6d4;
+    color: var(--main-color);
     font-weight: 500;
     opacity: 0;
-    animation: fadeIn 2s ease-in-out 1.5s forwards;
+    animation: fadeIn 1.5s ease-in-out 1.2s forwards;
   }
 
   .scroll-indicator svg {
-    width: 28px;
-    height: 28px;
-    margin-top: 8px;
-    animation: bounce 2s infinite;
+    width: 24px;
+    height: 24px;
+    margin-top: 6px;
+    animation: bounce 1.8s infinite;
   }
 
   @keyframes fadeIn {
@@ -83,7 +84,6 @@
     to { opacity: 1; }
   }
 </style>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const scrollElements = document.querySelectorAll(".scroll-animate");
