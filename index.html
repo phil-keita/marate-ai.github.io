@@ -6,38 +6,120 @@
   <title>Marate AI - Future of Medical Software</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+  :root {
+    --main-color: #06b6d4;
+    --bg-light: #f8fafc;
+    --text-dark: #0f172a;
+  }
 
-    :root {
-      --main-color: #06b6d4;
-      --bg-light: #f8fafc;
-      --text-dark: #0f172a;
-    }
+  body {
+    background: var(--bg-light);
+    scroll-behavior: smooth;
+  }
 
-    body {
-      background: var(--bg-light);
-      scroll-behavior: smooth;
-    };
+  /* Clearer, more dynamic scroll animation */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(100px) scale(0.95);
+    filter: blur(10px);
+    transition: 
+      opacity 0.9s ease-out,
+      transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+      filter 1.2s ease-out;
+  }
 
-    /* Animation d’apparition */
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 
-    .scroll-animate.visible {
-      opacity: 1;
+  /* Slight delay cascade for child elements (optional aesthetic) */
+  .scroll-animate:nth-of-type(2) { transition-delay: 0.15s; }
+  .scroll-animate:nth-of-type(3) { transition-delay: 0.3s; }
+  .scroll-animate:nth-of-type(4) { transition-delay: 0.45s; }
+
+  /* Add a subtle bounce when fully visible */
+  .scroll-animate.visible {
+    animation: softPop 0.6s ease-out;
+  }
+
+  @keyframes softPop {
+    0% { transform: scale(0.95); }
+    60% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+  /* Scroll down indicator */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
 
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #06b6d4;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 1.5s forwards;
+  }
 
-  </style>
+  .scroll-indicator svg {
+    width: 28px;
+    height: 28px;
+    margin-top: 8px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollElements = document.querySelectorAll(".scroll-animate");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    scrollElements.forEach(el => observer.observe(el));
+  });
+</script>
+
+</script>
+
 </head>
 <body class="text-gray-800 font-sans">
 
 <!-- Logo Intro Section -->
-<section class="flex items-center justify-center min-h-screen px-4 scroll-animate">
-  <img src="https://allarassemjonathan.github.io/marate_white.png" alt="Marate AI Logo" class="max-h-60 w-auto animate-pulse object-contain">
+<section class="relative flex items-center justify-center min-h-screen px-4 scroll-animate">
+  <img src="https://allarassemjonathan.github.io/marate_white.png" 
+       alt="Marate AI Logo" 
+       class="max-h-60 w-auto animate-pulse object-contain">
+  
+  <!-- Scroll down indicator -->
+  <div class="scroll-indicator">
+    <p>Défilez vers le bas</p>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
 </section>
 
 <!-- Navbar -->
@@ -52,12 +134,12 @@
   </nav>
 </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-40 bg-gradient-to-b from-cyan-100 to-white scroll-animate">
-    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">L’avenir de l’intelligence médicale</h1>
-    <p class="text-lg md:text-xl text-gray-700 mb-10">Concevoir des solutions basées sur l’intelligence artificielle pour les structures de santé de demain.</p>
-    <a href="#contact" class="px-10 py-4 bg-cyan-500 text-black font-semibold rounded-full text-lg hover:bg-cyan-400 transition">Join the Revolution</a>
-  </section>
+<!-- Hero Section -->
+<section class="text-center py-40 bg-gradient-to-b from-cyan-100 to-white scroll-animate">
+  <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">L’avenir de l’intelligence médicale</h1>
+  <p class="text-lg md:text-xl text-gray-700 mb-10">Concevoir des solutions basées sur l’intelligence artificielle pour les structures de santé de demain.</p>
+  <a href="#contact" class="px-10 py-4 bg-cyan-500 text-black font-semibold rounded-full text-lg hover:bg-cyan-400 transition">Join the Revolution</a>
+</section>
 
 
   <!-- Séparateur -->
@@ -72,10 +154,9 @@
   <section class="py-24 px-6 max-w-5xl mx-auto bg-[var(--bg-light)] scroll-animate">
     <h2 class="text-4xl font-bold text-center text-cyan-400 mb-8">À propos de Marate AI</h2>
     <p class="text-gray-800 text-lg text-center leading-relaxed">
-      Marate AI redéfinit les logiciels de santé grâce à l’intelligence artificielle de pointe, à l’analyse avancée des données et à l’automatisation intuitive.
-      Nous aidons les structures médicales à améliorer la qualité des soins, à accélérer leurs opérations et à innover sans limites.
-      Nous sommes une équipe d’Africains, dont certains ont étudié dans des universités américaines telles qu’Harvard et ont travaillé dans de grandes entreprises comme Asset Genie, Tesla et PayPal.
-      Actuellement basés à Diamniadio, au Sénégal.
+      Marate AI a un seul but. Aider l'Afrique dans le domaine médicale. C'est nôtre raison d'être. Nous aidons les structures de santé en Afrique à arriver à leurs buts. Nous assistons ces stuctures sur le terrain avec des outils technologiques de pointes. 
+      Nous sommes une équipe d’Africains, dont certains ont étudié dans des universités américaines et africaines d'élite telles que Harvard, ou le CESAG Business School. Certains d'entre nous ont travaillé dans de grandes entreprises americaines comme Asset Genie, Tesla ou PayPal.
+      Nous sommes actuellement basés à Diamniadio, au Sénégal.
       Contactez-nous à <span class="text-cyan-500 font-medium">toraltaerik@gmail.com</span>.
     </p>
   </section>
@@ -86,16 +167,20 @@
       <h2 class="text-4xl font-bold text-center text-cyan-400 mb-16">Nos Solutions</h2>
       <div class="grid md:grid-cols-3 gap-12">
         <div class="bg-white/5 rounded-3xl p-8 shadow-xl shadow-cyan-400/40 hover:shadow-cyan-400 transition hover:scale-105 backdrop-blur-md">
-          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Système de gestion de comptabilité</h3>
-          <p class="text-gray-800">Utiliser les données que nous avons sur le nombre de patients et les factures pour traquer les revenues mensuels des cabinets.</p>
+          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Système de gestion de comptabilité <br>(Marate Money)</h3>
+          <p class="text-gray-800">Utiliser les données que nous avons sur le nombre de patients et les factures pour traquer les revenues mensuels des cabinets et leurs donner des feedbacks sur des stratégies potentielles à adopter.</p>
         </div>
         <div class="bg-white/5 rounded-3xl p-8 shadow-xl shadow-cyan-400/40 hover:shadow-cyan-400 transition hover:scale-105 backdrop-blur-md">
-          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Dossier Médical Électronique</h3>
-          <p class="text-gray-800">Gérez les données des patients grâce à une technologie de pointe.</p>
+          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Système d'information <br>(Marate Patient)</h3>
+          <p class="text-gray-800">Systeme de dossier Médical Électronique. Cela permet de gérer les données des patients grâce à une technologie de pointe. Nous le combinons avec Marate Money pour les cliniques avec lesquelles nous travaillons.</p>
         </div>
         <div class="bg-white/5 rounded-3xl p-8 shadow-xl shadow-cyan-400/40 hover:shadow-cyan-400 transition hover:scale-105 backdrop-blur-md">
-          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Marate Store</h3>
-          <p class="text-gray-800">Connectez entrepôts, pharmacies et cliniques sur un marché en ligne de produits médicaux.</p>
+          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Système de gestion de marchandise <br>(Marate Store)</h3>
+          <p class="text-gray-800">Connectez entrepôts, pharmacies et cliniques sur un marché en ligne de produits médicaux. Nous servons de "middle-man" entre les entrepôts et les cabinets privés.</p>
+        </div>
+        <div class="bg-white/5 rounded-3xl p-8 shadow-xl shadow-cyan-400/40 hover:shadow-cyan-400 transition hover:scale-105 backdrop-blur-md">
+          <h3 class="text-2xl font-semibold text-cyan-600 mb-4">Site web à la demande <br>(Marate Web)</h3>
+          <p class="text-gray-800">Marate Web est un programme de Marate AI ou nous connectons avec des cabinets dans le but d'ameliorer leurs site webs. Cliquer <a href="https://rufisquepolyclinique.onrender.com/" style="color:#06b6d4">ici</a> pour voire un exemple de notre travail.</p>
         </div>
       </div>
     </div>  
@@ -113,7 +198,7 @@
           <a href = "https://www.linkedin.com/in/erik-toralta-9a9220364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="text-cyan-500">Linkedin</a>
         </div>
         <div class="text-center">
-          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/nice_pic.jpg" alt="Founder 2">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/betterjonathanWebsite.jpeg" alt="Founder 2">
           <h4 class="text-xl font-semibold text-gray-800">Jonathan Allarassem</h4>
           <p class="text-gray-800">Directeur technique</p>
           <a href = "https://www.linkedin.com/in/jonathan-allarassem-0aab09200" class="text-cyan-500">Linkedin</a>
@@ -127,22 +212,22 @@
         <div class="text-center">
           <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/api/bopan.jpeg"  alt="Founder 4">
           <h4 class="text-xl font-semibold text-gray-800">Bopan Antoine Sobkika</h4>
-          <p class="text-gray-800">Responsable Maintenace</p>
+          <p class="text-gray-800">Responsable Maintenance</p>
         </div>
         <div class="text-center">
-          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="WhatsApp Image 2025-10-12 at 08.07.35.jpeg" alt="Founder 5">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/WhatsApp Image 2025-10-12 at 08.07.35.jpeg" alt="Founder 5">
           <h4 class="text-xl font-semibold text-gray-800">Koulara Allah Mbayam Innocent</h4>
-          <p class="text-gray-800">Agent commercial et maintenancier</p>
-          <a href = "#" class="text-cyan-500">Linkedin</a>
+          <p class="text-gray-800">Responsable croissance en ligner</p>
+          <a href = "https://www.linkedin.com/in/mbayam-innocent-koulara-allah-b56075154/" class="text-cyan-500">Linkedin</a>
         </div>
         <div class="text-center">
-          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="WhatsApp Image 2025-10-12 at 08.28.28.jpeg" alt="Founder 6">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/WhatsApp Image 2025-10-12 at 08.28.28.jpeg" alt="Founder 6">
           <h4 class="text-xl font-semibold text-gray-800">Phillipe Keita</h4>
-          <p class="text-gray-800">Ingénieur logiciel</p>
-          <a href = "#" class="text-cyan-500">Linkedin</a>
+          <p class="text-gray-800">Ingénieur logiciel Senior</p>
+          <a href = "https://www.linkedin.com/in/philippekeita/" class="text-cyan-500">Linkedin</a>
         </div>
         <div class="text-center">
-          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="WhatsApp Image 2025-10-12 at 08.45.22.jpeg" alt="Founder 7">
+          <img class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cyan-400 mb-4" src="https://allarassemjonathan.github.io/WhatsApp Image 2025-10-12 at 08.45.22.jpeg" alt="Founder 7">
           <h4 class="text-xl font-semibold text-gray-800">Mélodie Allarassem</h4>
           <p class="text-gray-800">Ingénieur Logicielle</p>
           <a href = "https://www.linkedin.com/in/odelia-melodie-umuhoza-allarassem-1905a2356/" class="text-cyan-500">Linkedin</a>
@@ -173,12 +258,12 @@
   <!-- Contact Section -->
   <section id="contact" class="py-24 bg-gradient-to-b from-white to-cyan-100 scroll-animate">
     <div class="max-w-xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-cyan-400 mb-12">Connect with Us</h2>
+      <h2 class="text-4xl font-bold text-center text-cyan-400 mb-12">Connectez avec nous!</h2>
       <form action="mailto:toraltaerik@gmail.com" method="POST" enctype="text/plain" class="space-y-6">
-        <input type="text" name="name" placeholder="Name" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300">
+        <input type="text" name="name" placeholder="Nom" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300">
         <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300">
-        <textarea name="message" placeholder="Your message" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300" rows="5"></textarea>
-        <button type="submit" class="w-full bg-cyan-500 text-black py-3 rounded-lg font-semibold hover:bg-cyan-400 transition">Send Message</button>
+        <textarea name="message" placeholder="Votre message" class="w-full px-4 py-3 border border-cyan-400 rounded-lg bg-transparent text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-300" rows="5"></textarea>
+        <button type="submit" class="w-full bg-cyan-500 text-black py-3 rounded-lg font-semibold hover:bg-cyan-400 transition">Contacter!</button>
       </form>
     </div>
   </section>
